@@ -133,3 +133,8 @@ This repository contains an interactive simulation called the <a href="https://c
 ## Additional Resources 📓 [Under Construction]
 
 ⁕ For more details about the simulation and its implementation, refer to the provided source code in this repository.
+
+
+## Créditos dos ícones
+
+Os ícones dos materiais adicionados ao projeto foram obtidos a partir do conjunto aberto **OpenMoji**, disponibilizado sob licença **CC BY-SA 4.0**.

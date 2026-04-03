@@ -3,64 +3,61 @@ let selectedBlockIndex = -1;
 let isSimulationRunning = true;
 let lastUpdateTime = Date.now();
 
-
 const blockWidth = 100;
 const blockHeight = 100;
-const timeInterval = 10000; // Intervalo de tempo em milissegundos
+const HEAT_RATE_EPSILON = 1e-3;
 
-
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const blocks = [
-  {
-    x: 75,
-    y: 60,
-    color: '#ff6666',
-    temperature: 0,
-    label: 'A',
-    material: 'ice',
-    mass: 1
-  },
-  {
-    x: 275,
-    y: 60,
-    color: '#00bfff',
-    temperature: 60,
-    label: 'B',
-    material: 'water',
-    mass: 1
-  },
-  {
-    x: 475,
-    y: 60,
-    color: '#28f200',
-    temperature: 20,
-    label: 'C',
-    material: 'glass',
-    mass: 1
-  }
+  { x: 75, y: 60, color: '#ff6666', temperature: 0, label: 'A', material: 'ice', mass: 1000 },
+  { x: 275, y: 60, color: '#00bfff', temperature: 60, label: 'B', material: 'water', mass: 1000 },
+  { x: 475, y: 60, color: '#28f200', temperature: 20, label: 'C', material: 'glass', mass: 1000 }
 ];
-
-// Slider
+const initialBlockStates = blocks.map(block => ({ ...block }));
 
 const exchangeRateSlider = document.getElementById('exchangeRateSlider');
 const exchangeRateDisplay = document.getElementById('exchangeRateDisplay');
+const exchangeRateValues = [60, 120, 240, 500, 1000];
+const initialExchangeRateIndex = 2;
+exchangeRateSlider.value = initialExchangeRateIndex;
+let temperatureExchangeRate = exchangeRateValues[initialExchangeRateIndex];
 
-// Mapeando os valores do slider para valores de taxa de troca de temperatura
-const exchangeRateValues = [30000, 20000, 10000, 5000, 1000];
+const chartAxesCanvas = document.getElementById('temperatureAxes');
+const chartAxesCtx = chartAxesCanvas.getContext('2d');
+const chartCanvas = document.getElementById('temperaturePlot');
+const chartCtx = chartCanvas.getContext('2d');
+const chartWrapper = document.getElementById('chartScrollWrapper');
+const chartPadding = { left: 60, right: 28, top: 28, bottom: 42 };
+const plotArea = { left: chartPadding.left, top: chartPadding.top, width: 650 - chartPadding.left - chartPadding.right, height: 280 - chartPadding.top - chartPadding.bottom };
+const plotHeight = plotArea.height;
+const pixelsPerSecond = 28;
+let chartStarted = false;
+let chartFrozen = false;
+let chartStartTime = null;
+let chartElapsedMs = 0;
+let chartResumeTimestamp = null;
+let equilibriumMarkerTime = null;
+let equilibriumMarkerTemps = null;
+let equilibriumMarkerIndexes = [];
+let lastVisibleChartIndexes = [];
+const temperatureHistory = [
+  { label: 'A', color: '#ff6666', data: [] },
+  { label: 'B', color: '#00bfff', data: [] },
+  { label: 'C', color: '#28f200', data: [] }
+];
 
-// Definir o valor inicial do slider e da taxa de troca de temperatura para 10000
-exchangeRateSlider.value = 2;
-let temperatureExchangeRate = exchangeRateValues[2];
+let simulationContactActive = false;
+let currentContactPairs = [];
+let totalHeatJoules = 0;
+let lastHeatRateJoules = 0;
+const JOULE_TO_CAL = 1 / 4.184;
+let equilibriumSaved = false;
 
-// Atualiza o valor da taxa de troca de temperatura e exibe na tela
-function updateExchangeRate() {
-  const sliderValue = exchangeRateSlider.value;
-  const exchangeRate = exchangeRateValues[sliderValue];
-  temperatureExchangeRate = exchangeRate; // Atualiza o valor da constante temperatureExchangeRate
-}
-
-exchangeRateSlider.addEventListener('input', updateExchangeRate);
-
-// Inicializa o display com o valor padrão do slider
-updateExchangeRate();
+const materialIcons = {};
+Object.keys(materialProperties).forEach(key => {
+  const img = new Image();
+  img.src = `./image-icons/materials/${key}.png`;
+  materialIcons[key] = img;
+});

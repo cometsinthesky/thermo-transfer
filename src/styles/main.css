@@ -1,409 +1,465 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    color: #f0f0f0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-/* Adiciona gradiente de preto a branco */
-background: linear-gradient(to bottom, #000000, #1A1A1A);
+  font-family: 'Roboto', sans-serif;
+  color: #f0f0f0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #000000, #1A1A1A);
 }
 
-/* New Title Hover */
 .text {
-    font-family: "Roboto";
-    color: #f0f0f0;
-    font-size: 30px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    position: relative;
-    bottom: 10px;
-    text-align: center;
-    user-select: none;
-
-    .wrapper {
-        padding-left: 7px;
-        padding-right: 7px;
-        padding-top: 40px;
-
-        .letter {
-            transition: ease-out 0.1s;
-            /* Distância entre os títulos */
-            transform: translateY(42%);
-        }
-
-        .shadow {
-            transform: scale(1, -1);
-            color: #6b6b6bcc;
-            transition: ease-in 0.2s, ease-out 0.2s;
-        }
-
-        &:hover {
-            .letter {
-                transform: translateY(-30%);
-            }
-
-            .shadow {
-                opacity: 0;
-                transform: translateY(30%);
-            }
-        }
-    }
+  font-family: 'Roboto', sans-serif;
+  color: #f0f0f0;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  position: relative;
+  bottom: 10px;
+  text-align: center;
+  user-select: none;
 }
 
+.text .wrapper {
+  padding: 5px 7px 0;
+}
+
+.text .wrapper .letter {
+  transition: ease-out 0.1s;
+  transform: translateY(42%);
+}
+
+.text .wrapper .shadow {
+  transform: scale(1, -1);
+  color: #6b6b6bcc;
+  transition: ease-in 0.2s, ease-out 0.2s;
+}
+
+.text .wrapper:hover .letter {
+  transform: translateY(-30%);
+}
+
+.text .wrapper:hover .shadow {
+  opacity: 0;
+  transform: translateY(30%);
+}
 
 #canvas {
-    margin-top: 20px;
-    border: 2px solid #b8b8b8;
-    cursor: pointer;
+  margin-top: 10px;
+  border: 2px solid #b8b8b8;
+  cursor: pointer;
 }
 
-/* Mensagem equilíbrio térmico */
 .hidden {
-    display: none;
-  }
-  
-  #equilibriumMessage {
-    color: #f0f0f0;
-    position: absolute;
-    top: 170px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 8px 10px;
-    border: 2px solid #f0f0f0;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-/* Botão pausa */
-.pause-button{
-    font-family: Roboto, sans-serif;
-    font-weight: bold;
-    position: absolute;
-    top: 270px; /* Ajuste conforme necessário */
-    left: 120px; /* Ajuste conforme necessário */
-    padding: 8px 26px;
-    background-color: #4CAF50; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove a borda */
-    border-radius: 5px; /* Borda arredondada */
-    cursor: pointer; /* Mostra o cursor como ponteiro ao passar sobre o botão */
-    font-size: 14px; /* Tamanho da fonte */
-    width: 95px; /* Largura fixa do botão */
-    text-align: center; /* Centralizar o texto */
+  display: none;
 }
 
-/* Botão reinicia */
+#equilibriumMessage {
+  color: #f0f0f0;
+  display: inline-block;
+  margin: -4px 0 8px 0;
+  padding: 8px 14px;
+  border: 2px solid #f0f0f0;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#equilibriumMessage.hidden {
+  display: none !important;
+}
+
+
+.pause-button,
 .restart-button {
-    font-family: Roboto, sans-serif;
-    font-weight: bold;
-    position: absolute;
-    top: 330px; /* Ajuste conforme necessário */
-    left: 112px; /* Ajuste conforme necessário */
-    padding: 8px 26px;
-    background-color: #4CAF50; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove a borda */
-    border-radius: 5px; /* Borda arredondada */
-    cursor: pointer; /* Mostra o cursor como ponteiro ao passar sobre o botão */
-    font-size: 14px; /* Tamanho da fonte */
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  position: absolute;
+  padding: 8px 26px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pause-button {
+  top: 180px;
+  left: 120px;
+  width: 95px;
+  text-align: center;
+}
+
+.restart-button {
+  top: 225px;
+  left: 112px;
 }
 
 .pause-button:hover,
 .restart-button:hover {
-    background-color: #45a049; /* Altera a cor de fundo quando o botão é passado com o mouse */
+  background-color: #45a049;
 }
 
-/* Estilo quando pressionado */
 .pause-button:active,
 .restart-button:active {
-    background-color: #50bb56; /* Cor de fundo mais escura */
+  background-color: #50bb56;
 }
-
 
 .temperatureButton {
-    margin-top: 10px;
-    color: #f0f0f0;
-
+  margin-top: 10px;
+  color: #f0f0f0;
 }
 
-.materialButtonGroup {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    color: #f0f0f0;
-
+.mass-label {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
-.materialButtonGroup button {
-    padding: 30px;
-    padding-left: 8px;
-    padding-right: 8px;
-    cursor: pointer;
-    position: relative;
-    right: 10px;
-    color: #f0f0f0;
+.mass-input {
+  width: 110px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #8a8a8a;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f0f0f0;
+  text-align: center;
 }
-
 
 #instructionText {
-    font-size: 12px;
-    text-align: left;
-    margin-bottom: 0px;
-    color: #f0f0f0;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 0;
+  color: #f0f0f0;
 }
 
 table {
-    border-collapse: collapse;
-    width: 650px;
-    font-size: 14px;
-    margin-right: 0px;
-    color: #f0f0f0;
+  border-collapse: collapse;
+  width: 650px;
+  font-size: 14px;
+  margin-right: 0;
+  color: #f0f0f0;
 }
 
 th,
 td {
-    border: 1.5px solid #929292;
-    padding: 7px;
-    text-align: center;
+  border: 1.5px solid #929292;
+  padding: 7px;
+  text-align: center
 }
 
 th {
-    background-color: #181818ad;
+  background-color: #181818ad;
 }
 
 a:visited {
-    color: #eeeeee;
+  color: #eeeeee;
 }
 
 footer {
-    margin-top: 20px;
-    margin-bottom: -20px;
-    padding-left: 32px;
-    padding-right: 32px;
-    color: #f0f0f0;
+  margin-top: 40px;
+  margin-bottom: -20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  color: #f0f0f0;
+  font-size: 12px;
 }
-
 
 .slider {
-    width: 150px;
-    margin-top: 35px;
-    /* Ajuste para posicionar o slider a 100 pixels da borda superior */
-    position: absolute;
-    top: 0;
-    right: 50px;
-    /* Posiciona o slider no canto superior direito */
-    cursor: pointer;
-    border-radius: 30px;
-    /* Define o arredondamento das bordas do thumb */
+  width: 150px;
+  margin-top: 35px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  cursor: pointer;
+  border-radius: 30px;
 }
 
-/* Image speed icon slider */
 .img-speed {
-    position: absolute;
-    top: 50px;
-    right: 95px;
-    width: 65px; /* Ajuste conforme necessário */
-    height: auto; /* Para manter a proporção da imagem */
+  position: absolute;
+  top: 50px;
+  right: 95px;
+  width: 65px;
+  height: auto;
 }
 
-/* Altera a cor do track */
 .slider::-webkit-slider-runnable-track {
-    background: #6d6d6d;
-    /* Cor de fundo do track */
-    border-radius: 10px;
+  background: #6d6d6d;
+  border-radius: 10px;
 }
 
-/* Estilos para navegadores WebKit (Chrome, Safari, etc.) */
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    /* Remove a aparência padrão do thumb */
-    width: 30px;
-    /* Largura do thumb para WebKit */
-    height: 30px;
-    /* Altura do thumb para WebKit */
-    background-color: #ffffff;
-    /* Cor do thumb para WebKit */
-    border-radius: 50%;
-    /* Torna o thumb redondo para WebKit */
-    cursor: pointer;
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
 }
-
 
 .exchange-rate-label {
-    color: #f0f0f0;
-    position: absolute;
-    top: 12px;
-    /* Ajuste para posicionar o texto abaixo do slider */
-    right: 55px;
-    /* Alinha com o canto superior direito */
-    text-align: right;
-    font-size: 14px;
-    font-weight: bold;
+  color: #f0f0f0;
+  position: absolute;
+  top: 12px;
+  right: 55px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .slider-label-fast {
-    color: #f0f0f0;
-    position: absolute;
-    top: 54px;
-    right: 15px;
-    font-size: 13px;
-    font-weight: bold;
-    /* Ajuste para posicionar o texto "Rápido" ao lado direito do slider */
+  color: #f0f0f0;
+  position: absolute;
+  top: 54px;
+  right: 15px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .slider-label-slow {
-    color: #f0f0f0;
-    position: absolute;
-    top: 54px;
-    right: 195px;
-    font-size: 13px;
-    font-weight: bold;
+  color: #f0f0f0;
+  position: absolute;
+  top: 54px;
+  right: 195px;
+  font-size: 13px;
+  font-weight: bold;
 }
-
-
-.blocks {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 100px;
-    color: #f0f0f0;
-
-}
-
 
 .clearfix {
-    clear: both;
+  clear: both;
 }
 
-/* Styled button */
-
 .btn-hot {
-    font-family: Roboto, sans-serif;
-    color: #f0f0f0;
-    padding: 8px 18px;
-    background-color: #ff6666;
-    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 12.5px;
-    border: 0;
-    display: inline-block;
-    cursor: pointer;
-    padding-inline: 13px;
-    margin-top: 12px;
+  font-family: Roboto, sans-serif;
+  color: #f0f0f0;
+  background-color: #ff6666;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 12.5px;
+  border: 0;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 13px;
+  margin-top: 12px;
 }
 
 .btn-cold {
-
-    font-family: Roboto, sans-serif;
-    color: #f0f0f0;
-    padding: 8px 18px;
-    background-color: #00bfff;
-    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 12.5px;
-    border: 0;
-    cursor: pointer;
-    padding-inline: 17px;
-    margin-top: 7px;
-    margin-bottom: 12px;
-
+  font-family: Roboto, sans-serif;
+  color: #f0f0f0;
+  background-color: #00bfff;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 12.5px;
+  border: 0;
+  cursor: pointer;
+  padding: 8px 17px;
+  margin-top: 7px;
+  margin-bottom: 4px;
 }
 
-/* Layout timer */
+.timer-container {
+  font-family: Roboto, sans-serif;
+  color: #f0f0f0;
+  position: absolute;
+  top: 210px;
+  right: 25px;
+  align-items: center;
+}
 
-.timer-container{
-    font-family: Roboto, sans-serif;
-    color: #f0f0f0;
-    position: absolute;
-    top: 260px; /* A partir da borda superior */
-    right: 5px; /* A partir da borda direita */
-    align-items: center;
+.timer-container h2 {
+  font-size: 17px;
+  color: #f0f0f0;
+}
 
+.timer-container #timer {
+  font-size: 18px;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  width: 170px;
+}
 
-    h2 {
-        font-size: 17px; /* Altere este valor para o tamanho desejado */
-        color: #f0f0f0;
-    }
+.timer-container .buttons {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  right: 40px;
+  gap: 4px;
+}
 
-  #timer {
-    font-size: 18px;
-    color: #f0f0f0;
-    margin-bottom: 10px;
-    font-weight: bold;
-    width: 170px;
- 
-  }
-  
-  .buttons {
-    display: flex;
-    font-family: Roboto, sans-serif;
-    position: absolute;
-    align-items: center;
-    right: 10px;
-    gap: 2px;
-  }
-  
-  .buttons button {
-    display: flex;
-    font-family: Roboto, sans-serif;
-    color: #f0f0f0;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 5px 9px;
-    background-color: #408acf; /* Cor de fundo do botão */
-    border-radius: 5px; /* Borda arredondada */
-    border: none;
-    cursor: pointer; /* Mostra o cursor como ponteiro ao passar sobre o botão */
-    margin-bottom: 5px;
-  }
-  
-  .time-list {
-    max-height: 150px; /* Altura máxima da lista */
-    max-width: 230px;
-    overflow-y: auto; /* Tornar a lista rolável */
-    position: absolute;
-    margin-top: 30px;
-    width: 230px;
-    right: 0px;
-  }
-  
-  .time-list h2 {
-    font-size: 14px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: center;
-    color: #f0f0f0;
-  }
-  
-  .time-list ul {
-    padding-left: -10px;
-    margin-right: 5px;
-  }
-  
-  .time-list ul li {
-    list-style: none;
-    font-size: 14px;
-    margin-bottom: 3px;
+.timer-container .buttons button {
+  display: flex;
+  color: #f0f0f0;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 5px 9px;
+  background-color: #408acf;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
 
-  }
+.timer-container .time-list {
+  max-height: 150px;
+  max-width: 230px;
+  overflow-y: auto;
+  position: absolute;
+  margin-top: 30px;
+  width: 230px;
+  right: 0;
+}
 
-  /* Image speed icon slider */
+.timer-container .time-list h2 {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.timer-container .time-list ul {
+  padding-left: 0;
+  margin-right: 5px;
+}
+
+.timer-container .time-list ul li {
+  list-style: none;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
 .clock-icon {
-    position: absolute;
-    top: -22px;
-    right: 16px;
-    width: 50px; /* Ajuste conforme necessário */
-    height: auto; /* Para manter a proporção da imagem */
-    opacity: 0.95;
+  position: absolute;
+  top: -22px;
+  right: 16px;
+  width: 50px;
+  height: auto;
+  opacity: 0.95;
 }
+
+.graph-section {
+  width: 650px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.graph-section h2 {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+}
+
+.chart-frame {
+  position: relative;
+  width: 650px;
+  height: 280px;
+  border: 1.5px solid #7b7b7b;
+  background: #101010;
+  overflow: hidden;
+}
+
+#temperatureAxes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.chart-scroll-wrapper {
+  position: absolute;
+  left: 60px;
+  top: 28px;
+  width: 562px;
+  height: 210px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 2;
+  background: transparent;
+}
+
+#temperaturePlot {
+  display: block;
+  background: transparent;
+}
+
+.chart-hint {
+  font-size: 12px;
+  color: rgba(240, 240, 240, 0.85);
+  margin-top: 8px;
+}
+
+.heat-calculator {
+  position: absolute;
+  top: 390px;
+  left: 65px;
+  width: 200px;
+  border: 1.5px solid #7b7b7b;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 12px;
+  box-sizing: border-box;
+}
+
+.heat-calculator h2 {
+  font-size: 15px;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.heat-line {
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 5px;
+}
+
+.export-graph-button {
+  margin-top: -10px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  display: block;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  padding: 8px 14px;
+  background: #408acf;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.export-graph-button:hover {
+  background: #2f73b1;
+}
+
+.heat-calculator {
+  position: absolute;
+  top: 280px;
+  left: 65px;
+  width: 200px;
+  min-height: 98px;
+  border: 1.5px solid #7b7b7b;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 12px;
+  box-sizing: border-box;
+}
+
+.heat-calculator h2 {
+  font-size: 15px;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.heat-line {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
 }
