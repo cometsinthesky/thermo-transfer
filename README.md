@@ -2,6 +2,8 @@
 
 Simulador educacional em HTML, CSS e JavaScript para explorar **transferência de calor**, **equilíbrio térmico**, **variação de temperatura** e propriedades térmicas de diferentes materiais de forma visual, interativa e didática.
 
+## [Acesse a simulação Thermo Transfer agora!](https://cometsinthesky.github.io/thermo-transfer/)
+
 ## Sobre o projeto
 
 **Thermo Transfer** é uma simulação web voltada ao ensino de Ciências, Física e Química, com foco na compreensão de fenômenos relacionados à **troca de calor entre materiais**.
