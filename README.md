@@ -1,140 +1,167 @@
-# Simulação Lei Zero da Termodinâmica ⚛️ 
-(Português | Pt-BR)
+# Thermo Transfer: Uma Simulação Interativa de Transferência de Calor
 
-⁕ Este repositório contém uma simulação interativa denominada <a href="https://cometsinthesky.github.io/lei-zero-termodinamica" target="_blank">**Lei Zero da Termodinâmica**</a>, destinada a professores do ensino médio e fundamental para demonstrar os princípios da Lei Zero da Termodinâmica e o conceito de equilíbrio térmico.
+Simulador educacional em HTML, CSS e JavaScript para explorar **transferência de calor**, **equilíbrio térmico**, **variação de temperatura** e propriedades térmicas de diferentes materiais de forma visual, interativa e didática.
 
-## Descrição 📝
+## Sobre o projeto
 
-⁕ A simulação consiste em três blocos, denominados A, B e C, representando diferentes materiais contidos em uma caixa isolada adiabática. Um processo adiabático é aquele em que não há troca de calor com o ambiente externo. 
+**Thermo Transfer** é uma simulação web voltada ao ensino de Ciências, Física e Química, com foco na compreensão de fenômenos relacionados à **troca de calor entre materiais**.
 
-⁕ Através de botões clicáveis na tela, é possível selecionar o tipo de material para cada bloco, bem como aumentar ou diminuir a temperatura de cada bloco individualmente.
+A proposta do projeto é permitir que estudantes e professores observem, em tempo real, como diferentes blocos e substâncias interagem termicamente, analisando variáveis como temperatura, material, tempo e comportamento do sistema até o equilíbrio térmico.
 
-⁕ No canto inferior direito da interface, encontra-se um slider que permite ajustar a taxa de troca de calor entre os blocos, controlando assim a velocidade da simulação.
+O simulador foi pensado para uso educacional em sala de aula, estudo autônomo, demonstrações em projetor, atividades investigativas e sequências didáticas com metodologias ativas.
 
-⁕ Uma tabela contendo diversas propriedades físicas dos materiais está disponível, incluindo calor específico (J/kg.K), calor latente (J/kg) e temperaturas média, mínima e máxima (°C).
+## Objetivos pedagógicos
 
-⁕ Ao final da página, uma imagem ilustrativa sobre o conceito da Lei Zero da Termodinâmica está anexada, destinada ao uso em sala de aula pelos professores e como recurso para os estudantes.
+Este projeto pode ser utilizado para trabalhar conceitos como:
+
+- calor e temperatura;
+- condução e troca de energia térmica;
+- equilíbrio térmico;
+- capacidade térmica e calor específico;
+- influência do material no processo de aquecimento e resfriamento;
+- leitura de gráficos de temperatura em função do tempo;
+- observação de mudanças físicas em contextos de aquecimento/resfriamento;
+- interpretação de simulações como modelos científicos.
+
+Também é um recurso interessante para discutir a diferença entre:
+
+- **quantidade de calor** e **temperatura**;
+- **material** e **comportamento térmico**;
+- **modelo computacional** e **fenômeno real**.
+
+## Aplicações educacionais sugeridas
+
+Este projeto pode ser utilizado em:
+
+- aulas de Ciências do Ensino Fundamental II;
+- aulas de Física no Ensino Médio;
+- introdução à termologia;
+- revisão de calorimetria;
+- práticas investigativas com simulações;
+- atividades de laboratório virtual;
+- feiras de ciências e mostras interativas;
+- formação de professores e oficinas pedagógicas.
+
+Também pode ser adaptado para contextos bilíngues ou materiais didáticos digitais.
+
+## Público-alvo
+
+Este recurso pode ser especialmente útil para:
+
+- professores de Ciências e Física;
+- estudantes do Ensino Fundamental II e Ensino Médio;
+- licenciandos em Física, Química e Ciências Naturais;
+- pesquisadores em ensino de ciências;
+- desenvolvedores de objetos educacionais digitais.
+
+## Principais recursos
+
+O projeto foi estruturado como uma aplicação web leve e visual, com foco em interação direta. Entre os principais recursos do simulador, destacam-se:
+
+- interface visual com blocos/materiais representados por ícones;
+- seleção e comparação de diferentes materiais térmicos;
+- atualização dinâmica do comportamento térmico ao longo do tempo;
+- cronômetro visual para acompanhar a evolução da simulação;
+- organização modular em JavaScript, facilitando manutenção e expansão;
+- estilização própria em CSS para apresentação clara dos elementos da simulação;
+- funcionamento direto no navegador, sem necessidade de instalação;
+- potencial de uso em desktop, notebook e outros dispositivos compatíveis com navegador moderno.
+
+Pela estrutura do projeto, os materiais visuais disponíveis incluem:
+
+- alumínio;
+- cobre;
+- vidro;
+- granito;
+- gelo;
+- ferro;
+- areia;
+- água;
+- vapor d’água;
+- madeira.
+
+Esses elementos ajudam a tornar a experiência mais intuitiva, visual e próxima do contexto escolar.
+
+## Possibilidades de uso em aula
+
+Este simulador pode ser utilizado em diferentes formatos pedagógicos, por exemplo:
+
+### 1. Aula expositiva dialogada
+O professor projeta a simulação e conduz perguntas investigativas, como:
+
+- Qual material aquece mais rapidamente?
+- O que acontece quando dois corpos com temperaturas diferentes entram em contato?
+- Em que momento o sistema parece atingir equilíbrio térmico?
+- Como o gráfico ajuda a interpretar o fenômeno?
+
+### 2. Investigação em grupos
+Os estudantes podem manipular variáveis, observar resultados e registrar hipóteses, comparando o comportamento de diferentes materiais.
+
+### 3. Atividade de interpretação de gráficos
+A simulação pode servir como base para leitura de curvas, análise de tendências, comparação entre linhas e discussão sobre taxa de variação de temperatura.
+
+### 4. Integração com Química e mudanças de estado
+A depender da versão implementada do simulador, o recurso também pode apoiar discussões sobre fusão, vaporização, calor latente e transições de fase.
+
+### 5. Avaliação formativa
+O professor pode utilizar o simulador como ponto de partida para questões orais, relatórios curtos, produção de hipóteses ou resolução de problemas.
+
+## Estrutura do projeto
+
+A organização dos arquivos segue uma estrutura enxuta e modular:
+
+```text
+thermo-transfer/
+├── index.html
+├── src/
+│   ├── js/
+│   │   ├── functions.js
+│   │   ├── materials.js
+│   │   ├── runner.js
+│   │   └── variables.js
+│   └── styles/
+│       └── main.css
+└── image-icons/
+    ├── clock.png
+    ├── speed.png
+    └── materials/
+        ├── aluminum.png
+        ├── copper.png
+        ├── glass.png
+        ├── granite.png
+        ├── ice.png
+        ├── iron.png
+        ├── sand.png
+        ├── water.png
+        ├── watervapour.png
+        └── wood.png
+```
+
+### Função de cada arquivo
+
+#### `index.html`
+Arquivo principal da aplicação. Contém a estrutura base da interface, áreas visuais da simulação, controles e integração com os arquivos de estilo e JavaScript.
+
+#### `src/js/variables.js`
+Centraliza variáveis globais, estados iniciais, parâmetros-base da simulação e referências compartilhadas entre os demais scripts.
+
+#### `src/js/materials.js`
+Define os materiais disponíveis no sistema, possivelmente com propriedades específicas para cada substância ou bloco térmico.
+
+#### `src/js/functions.js`
+Reúne funções auxiliares e centrais da lógica do simulador, como cálculos, atualizações visuais e comportamentos dinâmicos.
+
+#### `src/js/runner.js`
+Responsável por iniciar a aplicação e coordenar a execução da simulação em tempo real.
+
+#### `src/styles/main.css`
+Arquivo de estilização principal, controlando layout, responsividade, aparência dos blocos, botões, painéis e demais elementos visuais.
+
+#### `image-icons/`
+Pasta com ícones e recursos gráficos usados na interface, incluindo materiais e indicadores visuais relacionados ao tempo e velocidade.
 
 ---
 
-## Como usar 👨‍🏫
+## Autoria
 
-⁕ Acessando a simulação:
-
-- Acesse a página web da simulação em [https://cometsinthesky.github.io/lei-zero-termodinamica/](https://cometsinthesky.github.io/lei-zero-termodinamica/).
-
-⁕ Se preferir usar a simulação offline, siga as seguintes instruções:
-* Na página do [repositório](https://github.com/cometsinthesky/lei-zero-termodinamica) clique no ícone verde **<>code**;
-* Em seguida, clique em "Download ZIP", ou se preferir o download direto clique [AQUI](https://github.com/cometsinthesky/lei-zero-termodinamica/archive/refs/heads/main.zip);
-* Vá para o local do arquivo baixado e extraia os arquivos para uma pasta;
-* Dentro da pasta, clique no arquivo **index.html** e arraste-o para uma aba aberta do navegador e solte-o nessa aba. A simulação deverá carregar automaticamente.
-
-⁕ Agora você está pronto para explorar a simulação e aprender sobre os princípios da Lei Zero da Termodinâmica e equilíbrio térmico!
-
-
-<p align="center">
-<img src="https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/2313/files/2020/06/yeah-science.jpg" alt="Yeah Science" height="230">
-</p>
-
----
-
-## Dinâmica da Simulação 🎮🕹️
-
-⁕ A simulação proporciona uma experiência interativa ao selecionar materiais a diferentes temperaturas e observar os fenômenos que ocorrem. É interessante para os professores demonstrarem os diferentes intervalos (Δt) de troca de calor entre dois ou três materiais distintos, destacando os conceitos de equilíbrio térmico.
-
-⁕ Quando os três blocos atingem a mesma temperatura, um estado de equilíbrio térmico é alcançado. Nesse cenário, não há mais transferência líquida de calor entre os blocos, pois suas temperaturas são iguais. Isso ocorre porque, de acordo com a Lei Zero da Termodinâmica, quando dois sistemas estão em equilíbrio térmico com um terceiro sistema, eles também estão em equilíbrio térmico entre si.
-
-⁕ A simulação demonstra vividamente como os blocos, inicialmente em temperaturas diferentes, gradualmente se ajustam até que todas as variações de temperatura sejam eliminadas. Esse estado de equilíbrio térmico é um conceito fundamental na termodinâmica e é crucial para entendermos como o calor é distribuído entre diferentes corpos e materiais em um sistema isolado. Ao observar os três blocos atingindo esse equilíbrio na simulação, os alunos podem visualizar e compreender melhor os princípios envolvidos na Lei Zero da Termodinâmica.
-
-⁕ No código, a equação  ‎ $Q = m \cdot c \cdot \Delta T$‎ ‎   foi incorporada para calcular a troca de calor, levando em consideração as propriedades físicas específicas de cada material e as interações entre os blocos A, B e C. Essa equação é fundamental na termodinâmica, onde **Q** representa a quantidade de calor transferida, **m** é a massa do material (foi adotado um valor padrão para todos os materiais), **c** é o calor específico do material e **ΔT** é a mudança de temperatura.
-
-⁕ A inclusão da equação  ‎ $Q = m \cdot c \cdot \Delta T$‎ ‎   no código permite uma simulação precisa da transferência de calor entre os blocos, considerando não apenas as diferenças nas temperaturas iniciais, mas também as características físicas individuais de cada material. Isso proporciona uma representação mais realista dos processos termodinâmicos e das interações entre os objetos na simulação.
-
-⁕ Além disso, foi implementada a funcionalidade de mudança automática de estado físico do bloco "Água", buscando simular os diferentes estados físicos da água e as transições de fase.
-
----
-
-## Educação 📚✏️
-
-⁕ De forma geral, a termodinâmica é uma área da física que estuda as relações entre energia, calor e trabalho. Ao longo dos séculos, os cientistas desenvolveram leis fundamentais que governam o comportamento dos sistemas físicos em diferentes condições termodinâmicas. Uma dessas leis, a Lei Zero da Termodinâmica, estabelece os fundamentos para a definição de temperatura e equilíbrio térmico. Apesar de ser a última a ser formalizada entre as leis termodinâmicas, a Lei Zero desempenha um papel crucial na compreensão de fenômenos termodinâmicos e na construção de escalas de temperatura, por exemplo (HEWITT, 2023; NUSSENZVEIG, 2018).
-
-⁕ Artigo no prelo: Simulação e Ensino de Física: Lei zero da termodinâmica a partir da experimentação e simulação baseada em programação JavaScript e Canvas Element para o Ensino Médio (FERREIRA, L.; FELIX, M.; CARVALHO, V., 2024).
-
-## Recursos Adicionais 📓 [Em Construção]
-
-⁕ Para obter mais detalhes sobre a simulação e sua implementação, consulte o código-fonte fornecido neste repositório.
-
----
----
-
-# Zeroth Law of Thermodynamics Simulation ⚛️
-(English | EN)
-
-This repository contains an interactive simulation called the <a href="https://cometsinthesky.github.io/lei-zero-termodinamica" target="_blank">**Zeroth Law of Thermodynamics**</a>, designed for high school and middle school teachers to demonstrate the principles of the Zeroth Law of Thermodynamics and the concept of thermal equilibrium.
-
-## Description 📝
-
-⁕ The simulation consists of three blocks, labeled A, B, and C, representing different materials contained in an adiabatic insulated box. An adiabatic process is one in which there is no heat exchange with the external environment.
-
-⁕ Through clickable buttons on the screen, you can select the type of material for each block, as well as increase or decrease the temperature of each block individually.
-
-⁕ In the bottom right corner of the interface, there is a slider that allows you to adjust the rate of heat exchange between the blocks, thus controlling the simulation speed.
-
-⁕ A table containing various physical properties of the materials is available, including specific heat (J/kg.K), latent heat (J/kg), and average, minimum, and maximum temperatures (°C).
-
-⁕ At the end of the page, an illustrative image about the concept of the Zeroth Law of Thermodynamics is attached, intended for classroom use by teachers and as a resource for students.
-
----
-
-## How to Use 👨‍🏫
-
-⁕ Accessing the simulation:
-
-- Access the simulation's web page at [https://cometsinthesky.github.io/lei-zero-termodinamica/](https://cometsinthesky.github.io/lei-zero-termodinamica/).
-
-⁕ If you prefer to use the simulation offline, follow these instructions:
-- On the [repository page](https://github.com/cometsinthesky/lei-zero-termodinamica), click on the green **<>code** icon;
-- Then, click on "Download ZIP", or if you prefer direct download, click [HERE](https://github.com/cometsinthesky/lei-zero-termodinamica/archive/refs/heads/main.zip);
-- Go to the location of the downloaded file and extract the files to a folder;
-- Inside the folder, click on the **index.html** file and drag it to an open browser tab and drop it in that tab. The simulation should load automatically.
-
-⁕ Now you are ready to explore the simulation and learn about the principles of the Zeroth Law of Thermodynamics and thermal equilibrium!
-
-<p align="center">
-<img src="https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/2313/files/2020/06/yeah-science.jpg" alt="Yeah Science" height="230">
-</p>
-
----
-
-## Simulation Dynamics 🎮🕹️
-
-⁕ The simulation provides an interactive experience by selecting materials at different temperatures and observing the phenomena that occur. It is interesting for teachers to demonstrate the different intervals (Δt) of heat exchange between two or three distinct materials, highlighting the concepts of thermal equilibrium.
-
-⁕ When the three blocks reach the same temperature, a state of thermal equilibrium is achieved. In this scenario, there is no net transfer of heat between the blocks anymore because their temperatures are equal. This occurs because, according to the Zeroth Law of Thermodynamics, when two systems are in thermal equilibrium with a third system, they are also in thermal equilibrium with each other.
-
-⁕ The simulation vividly demonstrates how the blocks, initially at different temperatures, gradually adjust until all temperature variations are eliminated. This state of thermal equilibrium is a fundamental concept in thermodynamics and is crucial for understanding how heat is distributed among different bodies and materials in an isolated system. By observing the three blocks reaching this equilibrium in the simulation, students can visualize and better understand the principles involved in the Zeroth Law of Thermodynamics.
-
-⁕ In the code, the equation  ‎ $Q = m \cdot c \cdot \Delta T$‎ ‎   has been incorporated to calculate heat exchange, taking into account the specific physical properties of each material and the interactions between blocks A, B, and C. This equation is fundamental in thermodynamics, where **Q** represents the amount of transferred heat, **m** is the mass of the material (a standard value is adopted for all materials), **c** is the specific heat of the material, and **ΔT** is the temperature change.
-
-⁕ The inclusion of the equation  ‎ $Q = m \cdot c \cdot \Delta T$‎ ‎   in the code allows for an accurate simulation of heat transfer between the blocks, considering not only differences in initial temperatures but also the individual physical characteristics of each material. This provides a more realistic representation of thermodynamic processes and interactions between objects in the simulation.
-
-⁕ Additionally, the functionality of automatic change of physical state of the "Water" block has been implemented to simulate the different physical states of water and phase transitions.
-
----
-
-## Education 📚✏️
-
-⁕ In general, thermodynamics is an area of physics that studies the relationships between energy, heat, and work. Over the centuries, scientists have developed fundamental laws that govern the behavior of physical systems under different thermodynamic conditions. One of these laws, the Zeroth Law of Thermodynamics, establishes the foundations for the definition of temperature and thermal equilibrium. Despite being the last to be formalized among the thermodynamic laws, the Zeroth Law plays a crucial role in understanding thermodynamic phenomena and in constructing temperature scales, for example (HEWITT, 2023; NUSSENZVEIG, 2018).
-
-⁕ Article in press: Simulation and Physics Teaching: Zeroth law of thermodynamics through experimentation and simulation based on JavaScript programming and Canvas Element for High School (FERREIRA, L.; FELIX, M.; CARVALHO, V., 2024).
-
----
-
-## Additional Resources 📓 [Under Construction]
-
-⁕ For more details about the simulation and its implementation, refer to the provided source code in this repository.
-
-
-## Créditos dos ícones
-
-Os ícones dos materiais adicionados ao projeto foram obtidos a partir do conjunto aberto **OpenMoji**, disponibilizado sob licença **CC BY-SA 4.0**.
+Desenvolvido por **Lucas Ferreira (UnB/IF/PPGEduC)**.
